@@ -5,7 +5,7 @@ import './scss/main.scss';
 import NavBar from './components/commons/NavBar';
 import { Paths } from './utils/types/basicTypes.d';
 import CategoryForm from './containers/CategoryForm';
-import AllLists from './containers/AllLists';
+import Lists from './containers/Lists';
 
 function App(): JSX.Element {
   return (
@@ -15,7 +15,7 @@ function App(): JSX.Element {
         <Switch>
           <Suspense fallback={<div>Loading...</div>}>
             <Route exact path={Paths.HOME}>
-              <AllLists />
+              <Lists />
             </Route>
             <Route path={Paths.ADD_CATEGORY}>
               <CategoryForm />

@@ -1,0 +1,19 @@
+.list-card {
+  text-align: center;
+  background-color: white;
+  width: 80%;
+  padding: 10px 0px;
+  margin: 20px auto;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.29);
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $third-color;
+    cursor: pointer;
+  }
+}
+
+.list-card a {
+  text-decoration: none;
+  color: black;
+}

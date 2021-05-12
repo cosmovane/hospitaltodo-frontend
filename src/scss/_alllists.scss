@@ -1,20 +1,52 @@
 .list-form {
   border: 5px solid rgb(4, 4, 87);
-  margin: 20px 180px;
+  margin: 40px 180px;
   border-radius: 5px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  height: 330px;
-  padding-top: 10px;
-  padding-bottom: 25px;
+  grid-template-columns: 50% 20% 30%;
+  height: 60px;
+  padding: 40px 0px;
+  align-items: center;
 }
 
 .add-list {
   position: absolute;
   margin-top: -15px;
   margin-left: 210px;
-  background-color: white;
+  background-color: whitesmoke;
   width: 230px;
   height: 20px;
   text-align: center;
+}
+
+.submit-list {
+  @include button(200px);
+
+  &:hover {
+    @include buttonHover();
+  }
+}
+
+.list-name-div {
+  padding-left: 20px;
+}
+
+.list-info {
+  flex-direction: row;
+  float: left;
+}
+
+#category-list-error,
+#name-list-error {
+  margin-left: 10px;
+}
+
+#name-input {
+  @include input(450px, 0.45rem, 0.85rem);
+}
+
+.all-lists {
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
 }

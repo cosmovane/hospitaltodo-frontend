@@ -1,5 +1,6 @@
 $first-color: #040457;
 $second-color: #e6e4e4;
+$third-color: #e4efff;
 
 @mixin button($width) {
   margin: auto;
@@ -19,4 +20,17 @@ $second-color: #e6e4e4;
   background-color: #b9b9b9;
   border: 1px solid #b9b9b9;
   cursor: pointer;
+}
+
+@mixin input($width, $paddingUpBottom, $paddingSides) {
+  appearance: none;
+  width: 100%;
+  color: #2d3748;
+  border: 1px solid #777777;
+  line-height: 1.25;
+  background-color: white;
+  padding: $paddingUpBottom $paddingSides;
+  border-radius: 0.25rem;
+  width: $width;
+  margin: 0px auto;
 }

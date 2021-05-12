@@ -4,16 +4,7 @@
 }
 
 #category-name-input {
-  appearance: none;
-  width: 100%;
-  color: #2d3748;
-  border: 1px solid #777777;
-  line-height: 1.25;
-  background-color: white;
-  padding: 0.65rem 0.75rem;
-  border-radius: 0.25rem;
-  width: 300px;
-  margin: 0px auto;
+  @include input(300px, 0.65rem, 0.75rem);
 }
 
 #category-name-lbl {
