@@ -1,0 +1,30 @@
+.menu {
+  width: 100%;
+  height: 85px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  background-color: $second-color;
+}
+
+.menu-item {
+  display: inline-grid;
+}
+
+#logo {
+  justify-content: left;
+  padding: 0px 120px;
+}
+
+#create-post,
+#search {
+  @include button(155px);
+
+  &:hover {
+    @include buttonHover();
+  }
+}
+
+#link-create-post {
+  justify-content: right;
+  padding: 0px 120px;
+}
