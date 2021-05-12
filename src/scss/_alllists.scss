@@ -47,6 +47,7 @@
 
 .all-lists {
   width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   margin: 0 auto;
-  align-items: center;
 }

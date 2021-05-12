@@ -1,14 +1,15 @@
 export enum Paths {
   HOME = '/',
   ADD_CATEGORY = '/categories',
+  LIST_DETAILS = '/list/:id',
 }
 
-export type Category = {
+export interface Category {
   createdAt: string;
   id: number;
   name: string;
   updatedAt: string;
-};
+}
 
 export interface List {
   id: number;
@@ -16,4 +17,19 @@ export interface List {
   categoryId: number;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface Item {
+  id: number;
+  description: string;
+  listId: number;
+  done: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface newItem {
+  description: string;
+  listId: number;
+  done: boolean;
 }

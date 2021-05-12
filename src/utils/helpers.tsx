@@ -12,3 +12,12 @@ export const setFormMessage = (
     inputElement.style.borderColor = 'red';
   }
 };
+
+export const validateForm = (spanId: string, inputId: string): boolean => {
+  const spanElement = document.getElementById(spanId) as HTMLSpanElement;
+  const inputElement = document.getElementById(inputId) as HTMLInputElement;
+  const info = inputElement.value.trim();
+  const validInfo = info !== '';
+  setFormMessage(validInfo, spanElement, inputElement, 'Name cannot be null');
+  return validInfo;
+};

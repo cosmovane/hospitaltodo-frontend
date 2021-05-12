@@ -14,9 +14,11 @@ const ListCard = ({
       <div className='list-card'>
         <Link to={`/list/${list.id}`}>
           <h3>{list.name}</h3>
-          <p>{list.createdAt}</p>
           <p>
             <strong>Category:</strong> {category}
+          </p>
+          <p>
+            <strong>Created:</strong> {list.createdAt}
           </p>
         </Link>
       </div>

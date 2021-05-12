@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import ListCard from '../components/ListCard';
-import { setFormMessage } from '../utils/helpers';
+import { validateForm } from '../utils/helpers';
 import { addList, getAllCategories, getAllLists } from '../utils/requests';
 import { Category, List } from '../utils/types/basicTypes.d';
 
@@ -31,21 +31,8 @@ const Lists = (): JSX.Element => {
     getLists();
   }, [newList]);
 
-  const validateForm = (): boolean => {
-    const spanElement = document.getElementById(
-      'name-list-error'
-    ) as HTMLSpanElement;
-    const inputElement = document.getElementById(
-      'name-input'
-    ) as HTMLInputElement;
-    const name = inputElement.value.trim();
-    const validName = name !== '';
-    setFormMessage(validName, spanElement, inputElement, 'Name cannot be null');
-    return validName;
-  };
-
   const saveList = async () => {
-    const validForm = validateForm();
+    const validForm = validateForm('name-list-error', 'name-input');
     if (validForm) {
       const inputElement = document.getElementById(
         'name-input'
@@ -63,10 +50,9 @@ const Lists = (): JSX.Element => {
         await addList(newList);
         window.alert('List Saved');
         setNewList(true);
+        inputElement.value = '';
       } catch (error) {
-        window.alert(
-          'We were not able to save the new category, please try later'
-        );
+        window.alert('We were not able to save the new list, please try later');
       }
     }
   };
@@ -78,7 +64,11 @@ const Lists = (): JSX.Element => {
         <div className='list-info list-name-div'>
           <label htmlFor='name'>List name</label>
           <br />
-          <input id='name-input' type='text' onInput={validateForm} />
+          <input
+            id='name-input'
+            type='text'
+            onInput={() => validateForm('name-list-error', 'name-input')}
+          />
           <br />
           <span className='error' id='name-list-error'></span>
         </div>

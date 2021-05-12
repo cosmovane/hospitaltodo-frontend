@@ -6,6 +6,7 @@ import NavBar from './components/commons/NavBar';
 import { Paths } from './utils/types/basicTypes.d';
 import CategoryForm from './containers/CategoryForm';
 import Lists from './containers/Lists';
+import ListDetails from './containers/ListDetails';
 
 function App(): JSX.Element {
   return (
@@ -19,6 +20,9 @@ function App(): JSX.Element {
             </Route>
             <Route path={Paths.ADD_CATEGORY}>
               <CategoryForm />
+            </Route>
+            <Route path={Paths.LIST_DETAILS}>
+              <ListDetails />
             </Route>
           </Suspense>
         </Switch>

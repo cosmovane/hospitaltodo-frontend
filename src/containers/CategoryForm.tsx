@@ -1,26 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { setFormMessage } from '../utils/helpers';
+import { validateForm } from '../utils/helpers';
 import { addCategory } from '../utils/requests';
 
 const CategoryForm = (): JSX.Element => {
   const { push } = useHistory();
 
-  const validateName = (): boolean => {
-    const spanElement = document.getElementById(
-      'name-error'
-    ) as HTMLSpanElement;
-    const inputElement = document.getElementById(
-      'category-name-input'
-    ) as HTMLInputElement;
-    const name = inputElement.value.trim();
-    const validName = name !== '';
-    setFormMessage(validName, spanElement, inputElement, 'Name cannot be null');
-    return validName;
-  };
-
   const submitCategory = async () => {
-    const validName = validateName();
+    const validName = validateForm('name-error', 'category-name-input');
     if (validName) {
       const inputElement = document.getElementById(
         'category-name-input'
@@ -51,7 +38,7 @@ const CategoryForm = (): JSX.Element => {
             name='name'
             id='category-name-input'
             type='text'
-            onInput={validateName}
+            onInput={() => validateForm('name-error', 'category-name-input')}
           />
         </div>
         <span className='error' id='name-error'></span>
