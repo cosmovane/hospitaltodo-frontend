@@ -8,6 +8,7 @@ import {
   getSingleCategory,
   getSingleList,
   updateItem,
+  deleteItem,
 } from '../utils/requests';
 import { Category, Item, List, newItem } from '../utils/types/basicTypes';
 
@@ -19,7 +20,7 @@ const ListDetails = (): JSX.Element => {
   const [listItems, setListItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [category, setCategory] = useState<Category | null>(null);
-  const [newItemSaved, setNewItem] = useState<boolean>(false);
+  const [newItemSaved, setNewItemSaved] = useState<boolean>(false);
 
   const getListItems = async () => {
     const allItems: Item[] = await getAllItems().then(
@@ -74,14 +75,14 @@ const ListDetails = (): JSX.Element => {
       try {
         await addItem(itemToSave);
         inputElement.value = '';
-        setNewItem(!newItemSaved);
+        setNewItemSaved(true);
       } catch (error) {
         window.alert('We were not able to save the new item, please try later');
       }
     }
   };
 
-  const updateCurrentItem = async (
+  const updateSelectedItem = async (
     e: React.MouseEvent<HTMLElement>,
     item: Item
   ) => {
@@ -95,7 +96,22 @@ const ListDetails = (): JSX.Element => {
     try {
       await updateItem(String(item.id), updatedItem);
     } catch (error) {
-      window.alert('We were not able to update the new item, please try later');
+      window.alert('We were not able to update the item, please try later');
+    }
+  };
+
+  const deleteSelectedItem = async (item: Item) => {
+    const deleteConfirmation = window.confirm(
+      'Do you want to delete this item?'
+    );
+    if (deleteConfirmation) {
+      try {
+        await deleteItem(String(item.id));
+        window.alert('Item deleted');
+        setNewItemSaved(true);
+      } catch (error) {
+        window.alert('We were not able to delete the item, please try later');
+      }
     }
   };
 
@@ -108,9 +124,9 @@ const ListDetails = (): JSX.Element => {
           {list !== null && (
             <>
               <br />
-              <div className='return'>
-                <Link to='/'>Return</Link>
-              </div>
+              <Link className='return-link' to='/'>
+                <div className='return'>Return</div>
+              </Link>
               <h1>{list.name}</h1>
               <p>
                 <strong>Category:</strong> {category?.name}
@@ -147,11 +163,18 @@ const ListDetails = (): JSX.Element => {
                               id=''
                               defaultChecked={checked}
                               onClick={(e: React.MouseEvent<HTMLElement>) =>
-                                updateCurrentItem(e, item)
+                                updateSelectedItem(e, item)
                               }
                             />
                             {item.description} - {item.id}
-                            <span className='delete-item'>X</span>
+                            <span
+                              className='delete-item'
+                              onClick={() => {
+                                deleteSelectedItem(item);
+                              }}
+                            >
+                              X
+                            </span>
                           </p>
                         </>
                       );

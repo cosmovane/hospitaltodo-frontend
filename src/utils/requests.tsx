@@ -87,3 +87,11 @@ export const updateItem = (
     throw new Error(error.message);
   }
 };
+
+export const deleteItem = (id: string): Promise<AxiosResponse> => {
+  try {
+    return axios.delete(`${ITEMS}/${id}`);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
