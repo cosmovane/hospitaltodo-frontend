@@ -85,7 +85,9 @@ const Lists = (): JSX.Element => {
                 </>
               ))
             ) : (
-              <>Loading...</>
+              <>
+                <option>Loading...</option>
+              </>
             )}
           </select>
           <br />
