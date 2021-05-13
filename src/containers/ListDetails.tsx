@@ -75,7 +75,7 @@ const ListDetails = (): JSX.Element => {
       try {
         await addItem(itemToSave);
         inputElement.value = '';
-        setNewItemSaved(true);
+        setNewItemSaved(!newItemSaved);
       } catch (error) {
         window.alert('We were not able to save the new item, please try later');
       }
@@ -108,7 +108,7 @@ const ListDetails = (): JSX.Element => {
       try {
         await deleteItem(String(item.id));
         window.alert('Item deleted');
-        setNewItemSaved(true);
+        setNewItemSaved(!newItemSaved);
       } catch (error) {
         window.alert('We were not able to delete the item, please try later');
       }
