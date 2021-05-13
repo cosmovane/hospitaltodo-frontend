@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import './scss/main.scss';
+import './scss/main.css';
 import NavBar from './components/commons/NavBar';
 import { Paths } from './utils/types/basicTypes.d';
 import CategoryForm from './containers/CategoryForm';
