@@ -296,6 +296,15 @@
   cursor: pointer;
 }
 
+.item-date {
+  color: gray;
+  font-size: 12px;
+}
+
+.item-p {
+  margin-bottom: 0;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;

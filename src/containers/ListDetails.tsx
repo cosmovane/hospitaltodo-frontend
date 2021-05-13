@@ -156,7 +156,7 @@ const ListDetails = (): JSX.Element => {
                       const checked = item.done;
                       return (
                         <>
-                          <p key={item.id}>
+                          <p className='item-p' key={item.id}>
                             <input
                               type='checkbox'
                               name='done'
@@ -166,7 +166,7 @@ const ListDetails = (): JSX.Element => {
                                 updateSelectedItem(e, item)
                               }
                             />
-                            {item.description} - {item.id}
+                            {item.description}{' '}
                             <span
                               className='delete-item'
                               onClick={() => {
@@ -176,6 +176,9 @@ const ListDetails = (): JSX.Element => {
                               X
                             </span>
                           </p>
+                          <span className='item-date'>
+                            Added: {item.createdAt}
+                          </span>
                         </>
                       );
                     })}
